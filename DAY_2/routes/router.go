@@ -3,6 +3,7 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"os"
 )
 
 func World(c *gin.Context) {
@@ -38,5 +39,19 @@ func QueryRequest(c *gin.Context) {
 func Param(c *gin.Context) {
 	param, _ := c.Request.Cookie("message")
 	c.JSON(http.StatusOK, gin.H {
-		"message": param.String()	})
+		"message": param.String()})
+}
+
+func HelloWorld(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H {
+		os.Getenv("HELLO_MESSAGE"): "pong"})
+}
+
+func GetAllQueries(c *gin.Context) {
+	queries := c.Request.URL.Query()
+	array
+	type Queries struct {
+		Key string
+		value []string
+	}
 }
